@@ -2,9 +2,15 @@ const express = require('express');
 const fs = require('fs');
 
 const app = express();
-
 // middleware || in the middle of req and res
 app.use(express.json());
+
+// how to create my own middleware
+app.use((req, res, next) => {
+  console.log('Hello from the middleware 🤣');
+  next();
+})
+
 
 ///////////////////////////////////////////////////////////
 
