@@ -55,8 +55,8 @@ exports.getTour = (req, res) => {
 exports.creatTour = (req, res) => {
   // console.log(req.body);
   // To add new tour in the Tours obj
-  exports.newId = tours[tours.length - 1].id + 1;
-  exports.newTour = Object.assign({ id: newId }, req.body);
+  const newId = tours[tours.length - 1].id + 1;
+  const newTour = Object.assign({ id: newId }, req.body);
 
   tours.push(newTour);
 

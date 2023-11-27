@@ -9,6 +9,7 @@ const app = express();
 //  MIDDLEWARES || morgan is 3rd part Middleware
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.static(`${__dirname}/public`));
 
 // how to create my own middleware
 app.use((req, res, next) => {
