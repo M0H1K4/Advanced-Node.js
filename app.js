@@ -6,17 +6,21 @@ const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
-//  MIDDLEWARES || morgan is 3rd part Middleware
-app.use(morgan('dev'));
+// Middleware for development mode
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
-// how to create my own middleware
+// Custom middleware
 app.use((req, res, next) => {
   console.log('Hello from the middleware 🤣');
   next();
 });
-// Defining Request Time
+
+// Request time middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
@@ -27,3 +31,4 @@ app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
 module.exports = app;
+
