@@ -44,6 +44,8 @@ const testTour = new Tour({
   price: 5.8,
 });
 
+
+/// this is comment of my project
 testTour
   .save()
   .then((doc) => {
